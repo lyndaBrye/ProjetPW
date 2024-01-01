@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Détails du Contact</h1>
-    <a href="HomeController.php">Retour à la liste des contacts</a>
+    <a href="../../controllers/contactControllers/HomeController.php">Retour à la liste des contacts</a>
 
     <?php if ($contact): ?>
         <p><strong>Nom :</strong> <?php echo $contact->getNom(); ?></p>

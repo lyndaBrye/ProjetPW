@@ -9,10 +9,10 @@
 <h1>Welcome</h1>
 <nav>
     <ul>
-        <li><a href="Licencies/home.php">Licencié</a></li>
-        <li><a href="Categories/home.php">Categorie</a></li>
-        <li><a href="Educateur/home.php">Educateur</a></li>
-        <li><a href="Contact/home.php">Contact</a></li>
+        <li><a href="../controllers/licencieControllers/HomeController.php"">Licencié</a></li>
+        <li><a href="../controllers/categorieControllers/HomeController.php"">Categorie</a></li>
+        <li><a href="../controllers/educateurControllers/HomeController.php">Educateur</a></li>
+        <li><a href="../controllers/contactControllers/HomeController.php">Contact</a></li>
     </ul>
 </nav>
 </body>
