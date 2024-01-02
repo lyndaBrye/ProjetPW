@@ -3,11 +3,16 @@ class AddLicencieController {
     private $licencieDAO;
     private $contactDAO;
     private $categorieDAO;
-
     public function __construct(LicencieDAO $licencieDAO, ContactDAO $contactDAO, CategorieDAO $categorieDAO) {
         $this->licencieDAO = $licencieDAO;
         $this->contactDAO = $contactDAO;
         $this->categorieDAO = $categorieDAO;
+    }
+
+    private function genererNumeroLicence($nom, $prenom) {
+        $initiales = strtoupper(substr($nom, 0, 1) . substr($prenom, 0, 1));
+        $nombreAleatoire = str_pad(mt_rand(100, 999), 3, '0', STR_PAD_LEFT);
+        return $initiales  . $nombreAleatoire;
     }
 
     public function index() {
@@ -23,9 +28,10 @@ class AddLicencieController {
     public function addLicencie() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Récupérer les données du formulaire
-            $numeroLicence = $_POST['numero_licence'];
+         //   $numeroLicence = $_POST['numero_licence'];
             $nom = $_POST['nom'];
             $prenom = $_POST['prenom'];
+            $numeroLicence = $this->genererNumeroLicence($nom, $prenom);
             $contactId = $_POST['contact_id'];
             $categorieId = $_POST['categorie_id'];
 

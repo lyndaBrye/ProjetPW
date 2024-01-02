@@ -12,8 +12,6 @@
 
 <?php if ($licencie): ?>
     <form action="../../controllers/licencieControllers/EditLicencieController.php?id=<?= $licencie->getId(); ?>" method="post">
-        <label for="numero_licence">Numéro de licence :</label>
-        <input type="text" id="numero_licence" name="numero_licence" value="<?= $licencie->getNumeroLicence(); ?>" required><br>
 
         <label for="nom">Nom :</label>
         <input type="text" id="nom" name="nom" value="<?= $licencie->getNom(); ?>" required><br>

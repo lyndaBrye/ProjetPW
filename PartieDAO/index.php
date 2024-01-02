@@ -1,2 +1,2 @@
 <?php
-    header("Location:views/Home.php");?>
+    header("Location:views/Educateur/login.php");?>

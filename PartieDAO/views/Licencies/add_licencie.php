@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+
+
 <head>
     <meta charset="UTF-8">
     <title>Ajouter un Licencié</title>
@@ -10,9 +19,6 @@
 <h1>Ajouter un Licencié</h1>
 
 <form action="../../controllers/licencieControllers/AddLicencieController.php" method="post">
-    <label for="numero_licence">Numéro de Licence:</label>
-    <input type="text" id="numero_licence" name="numero_licence" required><br>
-
     <label for="nom">Nom :</label>
     <input type="text" id="nom" name="nom" required><br>
 

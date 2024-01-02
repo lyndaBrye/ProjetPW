@@ -3,7 +3,6 @@
 class LicencieDAO
 {
     private $connexion;
-
     public function __construct(Connexion $connexion) {
         $this->connexion = $connexion;
     }
@@ -87,9 +86,9 @@ class LicencieDAO
     // MÃ©thode pour mettre Ã  jour un licencie
     public function update(LicencieModel $licencie) {
         try {
-            $stmt = $this->connexion->pdo->prepare("UPDATE licencies SET numero_licence = ?, nom = ?, prenom = ?, contact_id = ?, categorie_id = ? WHERE id = ?");
+            $stmt = $this->connexion->pdo->prepare("UPDATE licencies SET nom = ?, prenom = ?, contact_id = ?, categorie_id = ? WHERE id = ?");
             $stmt->execute([
-                $licencie->getNumeroLicence(),
+               // $licencie->getNumeroLicence(),
                 $licencie->getNom(),
                 $licencie->getPrenom(),
                 $licencie->getcontactId()->getId(),

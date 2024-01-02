@@ -105,6 +105,6 @@ class EducateurDAO {
         }
     }
 }
-
-require_once("../../classes/models/LicencieModel.php");
+require_once ("../../classes/models/LicencieModel.php");
 require_once("../../classes/dao/LicencieDAO.php");
+require_once ("../../classes/models/EducateurModel.php");
