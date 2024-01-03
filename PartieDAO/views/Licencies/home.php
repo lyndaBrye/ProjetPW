@@ -23,8 +23,8 @@
         <legend>Liste des licencies</legend>
 
         <div class="pull-right">
-            <a href="../../controllers/licencieControllers/HomeController.php" class="btn btn-default-btn-xs btn-primary"><i class="glyphicon glyphicon-refresh"></i> Refresh</a>
-            <a href="../../controllers/licencieControllers/AddLicencieController.php" class="btn btn-default-btn-xs btn-success"><i class="glyphicon glyphicon-plus"></i> New</a>
+<!--            <a href="../../controllers/licencieControllers/HomeController.php" class="btn btn-default-btn-xs btn-primary"><i class="glyphicon glyphicon-refresh"></i> Refresh</a>
+-->            <a href="../controllers/licencieControllers/AddLicencieController.php" class="btn btn-default-btn-xs btn-success"><i class="glyphicon glyphicon-plus"></i> New</a>
         </div>
         <table class="table table-bordered table-condensed table-hover">
             <thead>
@@ -50,8 +50,8 @@
                     <td><?php echo $licence->getcontactID()->getEmail(); ?></td>
 
                     <td>
-                        <a href="../../controllers/licencieControllers/EditLicencieController.php?id=<?php echo $licence->getId(); ?>" title="edit this user" class="btn btn-default btn-sm "> <i class="glyphicon glyphicon-edit text-primary"></i> </a>
-                        <a  href="../../controllers/licencieControllers/DeleteLicencieController.php?id=<?php echo $licence->getId(); ?>" title="delete this user" class="btn btn-default btn-sm "> <i class="glyphicon glyphicon-trash text-danger"></i> </a>
+                        <a href="../controllers/licencieControllers/EditLicencieController.php?id=<?php echo $licence->getId(); ?>" title="edit this user" class="btn btn-default btn-sm "> <i class="glyphicon glyphicon-edit text-primary"></i> </a>
+                        <a  href="../controllers/licencieControllers/DeleteLicencieController.php?id=<?php echo $licence->getId(); ?>" title="delete this user" class="btn btn-default btn-sm "> <i class="glyphicon glyphicon-trash text-danger"></i> </a>
                     </td>
                 </tr>
             <?php endforeach; ?>

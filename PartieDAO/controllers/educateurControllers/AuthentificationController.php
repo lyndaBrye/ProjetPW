@@ -70,7 +70,7 @@ class AuthentificationController {
         // Déconnexion : détruire la session et rediriger vers la page de connexion
         session_start();
         session_destroy();
-        header('Location: login.php');
+        header('Location: ../../views/Educateur/login.php');
         exit();
     }
 }
@@ -88,7 +88,9 @@ $controller = new AuthentificationController($educateurDAO);
 
 if (!isset($_POST['action'])) {
     //$controller->index();
-} else {
+} elseif ($_POST['action'] === 'logout') {
+    $controller->logout();
+}elseif ($_POST['action'] === 'login') {
     $controller->processLogin();
 }
 ?>

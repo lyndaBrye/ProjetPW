@@ -49,6 +49,6 @@
     <input type="submit" name="action" value="Ajouter">
 </form>
 
-<a href="../../controllers/licencieControllers/HomeController.php">Retour à la liste des licenciés</a>
+<a href="../licencieControllers/HomeController.php">Retour à la liste des licenciés</a>
 </body>
 </html>

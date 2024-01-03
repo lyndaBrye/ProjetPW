@@ -22,8 +22,8 @@
 <legend>Liste des Educateurs</legend>
 
 <div class="pull-right">
-    <a href="../../controllers/educateurControllers/HomeController.php" class="btn btn-default-btn-xs btn-primary"><i class="glyphicon glyphicon-refresh"></i> Refresh</a>
-    <a href="../.././controllers/educateurControllers/AddEducateurController.php" class="btn btn-default-btn-xs btn-success"><i class="glyphicon glyphicon-plus"></i> New</a>
+<!--    <a href="../../controllers/educateurControllers/HomeController.php" class="btn btn-default-btn-xs btn-primary"><i class="glyphicon glyphicon-refresh"></i> Refresh</a>
+-->    <a href="../.././controllers/educateurControllers/AddEducateurController.php" class="btn btn-default-btn-xs btn-success"><i class="glyphicon glyphicon-plus"></i> New</a>
 </div>
     <?php
     if (count($educateurs) > 0): ?>
