@@ -59,7 +59,7 @@
     <footer class="pull-left footer">
         <p class="col-md-12">
         <hr class="divider">
-        Copyright &COPY; 2023 <a href="#">Gravitano</a>
+        Copyright &COPY; 2023 <a href="#">Istic</a>
         </p>
     </footer>
 </div>
@@ -73,7 +73,6 @@
             type: 'GET',
             success: function (data) {
                 $('#dashboard-content').html(data);
-              //  attachLicencieEvents();
             },
             error: function () {
                 alert('Erreur lors du chargement du contenu de Licencié.');
@@ -93,7 +92,6 @@
             }
         });
     }
-
     function loadEducateurContent() {
         $.ajax({
             url: '../controllers/educateurControllers/HomeController.php',
@@ -106,13 +104,12 @@
             }
         });
     }
-
     function loadCategorieContent() {
         $.ajax({
             url: '../controllers/categorieControllers/HomeController.php',
             type: 'GET',
             success: function (data) {
-                $('#dashboard-content').html(data); // Utilisez le bon identifiant ici
+                $('#dashboard-content').html(data);
             },
             error: function () {
                 alert('Erreur lors du chargement du contenu de categorie.');
