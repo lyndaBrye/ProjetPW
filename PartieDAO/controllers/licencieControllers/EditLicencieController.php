@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 class EditLicencieController {
     private $licencieDAO;
     private $categorieDAO;
@@ -9,6 +11,22 @@ class EditLicencieController {
         $this->licencieDAO = $licencieDAO;
         $this->contactDAO = $contactDAO;
         $this->categorieDAO = $categorieDAO;
+    }
+
+    private function checkAuthentication()
+    {
+        // Vérifier si l'utilisateur est authentifié en tant qu'administrateur
+        if (!isset($_SESSION['email'])) {
+            // Rediriger vers la page de connexion si non authentifié
+            header('Location: ../../views/Educateur/login.php');
+            exit();
+        }
+    }
+    public function index() {
+        $this->checkAuthentication();
+
+        // Inclure la vue pour afficher le formulaire d'ajout de contact
+        include('../../views/Licencies/edit_licencie.php');
     }
 
     public function editLicencie($id) {
@@ -45,7 +63,7 @@ class EditLicencieController {
             // Appeler la méthode du modèle (CategorieDAO) pour mettre à jour la catégorie
             if ($this->licencieDAO->update($licencie)) {
                 // Rediriger vers la page de détails de la catégorie après la modification
-                header('Location: HomeController.php?id=' . $id);
+                header('Location:  ../../views/home.php?id=' . $id);
                 exit();
             } else {
                 // Gérer les erreurs de mise à jour de la catégorie

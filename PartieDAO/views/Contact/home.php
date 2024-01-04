@@ -26,7 +26,7 @@
         <div class="pull-right">
 
 <!--            <a href="../../controllers/contactControllers/HomeController.php" class="btn btn-default-btn-xs btn-primary"><i class="glyphicon glyphicon-refresh"></i> Refresh</a>
--->            <a href="../../controllers/contactControllers/AddContactController.php" class="btn btn-default-btn-xs btn-success"><i class="glyphicon glyphicon-plus"></i> New</a>
+-->            <a href="../controllers/contactControllers/AddContactController.php" class="btn btn-default-btn-xs btn-success"><i class="glyphicon glyphicon-plus"></i> Ajouter</a>
         </div>
         <table class="table table-bordered table-condensed table-hover">
             <thead>
@@ -49,8 +49,8 @@
                     <td><?php echo $contact->getTelephone(); ?></td>
 
                     <td>
-                        <a href="../../controllers/contactControllers/EditContactController.php?id=<?php echo $contact->getId(); ?>" title="edit this user" class="btn btn-default btn-sm "> <i class="glyphicon glyphicon-edit text-primary"></i> </a>
-                        <a  href="../../controllers/contactControllers/DeleteContactController.php?id=<?php echo $contact->getId(); ?>" title="delete this user" class="btn btn-default btn-sm "> <i class="glyphicon glyphicon-trash text-danger"></i> </a>
+                        <a href="../controllers/contactControllers/EditContactController.php?id=<?php echo $contact->getId(); ?>" title="edit this user" class="btn btn-default btn-sm "> <i class="glyphicon glyphicon-edit text-primary"></i> </a>
+                        <a  href="../controllers/contactControllers/DeleteContactController.php?id=<?php echo $contact->getId(); ?>" title="delete this user" class="btn btn-default btn-sm "> <i class="glyphicon glyphicon-trash text-danger"></i> </a>
                     </td>
                 </tr>
             <?php endforeach; ?>

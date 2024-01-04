@@ -5,8 +5,6 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-<link href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" rel="stylesheet" media="screen">
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 
 
 <head>
@@ -23,7 +21,7 @@
 
 <div class="pull-right">
 <!--    <a href="../../controllers/educateurControllers/HomeController.php" class="btn btn-default-btn-xs btn-primary"><i class="glyphicon glyphicon-refresh"></i> Refresh</a>
--->    <a href="../.././controllers/educateurControllers/AddEducateurController.php" class="btn btn-default-btn-xs btn-success"><i class="glyphicon glyphicon-plus"></i> New</a>
+-->    <a href=".././controllers/educateurControllers/AddEducateurController.php" class="btn btn-default-btn-xs btn-success"><i class="glyphicon glyphicon-plus"></i> Ajouter</a>
 </div>
     <?php
     if (count($educateurs) > 0): ?>
@@ -41,9 +39,10 @@
                         <td><?php echo $educateur->getLicenceID()->getNumeroLicence(); ?></td>
 
                         <td>
-                            <a href="../.././controllers/educateurControllers/ViewEducateurController.php?id=<?php echo $educateur->getIdEducateur(); ?>" title="view this user" class="btn btn-default btn-sm "> <i class="glyphicon glyphicon-eye-open text-primary"></a>
-                            <a href="../.././controllers/educateurControllers/EditEducateurController.php?id=<?php echo $educateur->getIdEducateur(); ?>" title="edit this user" class="btn btn-default btn-sm "> <i class="glyphicon glyphicon-edit text-primary"></a>
-                            <a href="../.././controllers/educateurControllers/DeleteEducateurController.php?id=<?php echo $educateur->getIdEducateur(); ?>" title="delete this user" class="btn btn-default btn-sm "> <i class="glyphicon glyphicon-trash text-primary"></a>
+                            <a href=".././controllers/educateurControllers/ViewEducateurController.php?id=<?php echo $educateur->getIdEducateur(); ?>" title="edit this user" class="btn btn-default btn-sm "> <i class="glyphicon glyphicon-eye-open text-primary"></i> </a>
+                            <a href=".././controllers/educateurControllers/EditEducateurController.php?id=<?php echo $educateur->getIdEducateur(); ?>" title="edit this user" class="btn btn-default btn-sm "> <i class="glyphicon glyphicon-edit text-primary"></i> </a>
+
+                            <a  href=".././controllers/educateurControllers/DeleteEducateurController.php?id=<?php echo $educateur->getIdEducateur(); ?>" title="delete this user" class="btn btn-default btn-sm "> <i class="glyphicon glyphicon-trash text-danger"></i> </a>
                         </td>
                 <?php endforeach; ?>
             </tbody>

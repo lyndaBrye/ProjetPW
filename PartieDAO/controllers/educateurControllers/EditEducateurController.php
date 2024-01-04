@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 class EditEducateurController
 {
@@ -7,6 +8,21 @@ class EditEducateurController
     public function __construct(EducateurDAO $educateurDAO,LicencieDAO $licencieDAO) {
         $this->licencieDAO = $licencieDAO;
         $this->educateurDAO = $educateurDAO;
+    }
+    private function checkAuthentication()
+    {
+        // Vérifier si l'utilisateur est authentifié en tant qu'administrateur
+        if (!isset($_SESSION['email'])) {
+            // Rediriger vers la page de connexion si non authentifié
+            header('Location: ../../views/Educateur/login.php');
+            exit();
+        }
+    }
+
+    public function index(){
+        $this->checkAuthentication();
+
+        include ('../../views/Educateur/edit_educateur.php');
     }
     public function editEducateur($id) {
         // Récupérer la liste des educateurs à modifier en utilisant son ID
@@ -31,7 +47,7 @@ class EditEducateurController
             // Appeler la méthode du modèle (CategorieDAO) pour mettre à jour la catégorie
             if ($this->educateurDAO->update($educateur)) {
                 // Rediriger vers la page de détails de la catégorie après la modification
-                header('Location: HomeController.php?id=' . $id);
+                header('Location:../../views/home.php?id=' . $id);
                 exit();
             } else {
                 // Gérer les erreurs de mise à jour de la catégorie

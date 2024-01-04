@@ -24,7 +24,7 @@
 
         <div class="pull-right">
 <!--            <a href="../../controllers/licencieControllers/HomeController.php" class="btn btn-default-btn-xs btn-primary"><i class="glyphicon glyphicon-refresh"></i> Refresh</a>
--->            <a href="../controllers/licencieControllers/AddLicencieController.php" class="btn btn-default-btn-xs btn-success"><i class="glyphicon glyphicon-plus"></i> New</a>
+-->            <a href="../controllers/licencieControllers/AddLicencieController.php" class="btn btn-default-btn-xs btn-success"><i class="glyphicon glyphicon-plus"></i> Ajouter</a>
         </div>
         <table class="table table-bordered table-condensed table-hover">
             <thead>

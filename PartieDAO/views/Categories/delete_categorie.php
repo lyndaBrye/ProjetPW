@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>Supprimer une categorie</h1>
-<a href="../../controllers/categorieControllers/HomeController.php">Retour à la liste des contacts</a>
+<a href="../../views/home.php">Accueil</a>
 
 <?php if ($categories): ?>
     <p>Voulez-vous vraiment supprimer le contact "<?php echo $categories->getNom(); ?> <?php echo $categories->getCodeRaccourci(); ?>" ?</p>

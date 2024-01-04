@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Détails du Contact</h1>
-    <a href="../../controllers/categorieControllers/HomeController.php">Retour à la liste des categories</a>
+    <a href="../../views/home.php">Accueil</a>
 
     <?php if ($categories): ?>
         <p><strong>Nom :</strong> <?php echo $categories->getNom(); ?></p>

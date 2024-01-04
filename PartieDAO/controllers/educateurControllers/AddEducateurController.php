@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 class AddEducateurController
 {
     private $educateurDAO;
@@ -7,6 +9,15 @@ class AddEducateurController
     public function __construct (EducateurDAO $educateurDAO, LicencieDAO $licencieDAO) {
         $this->educateurDAO = $educateurDAO;
         $this->licencieDAO = $licencieDAO;
+    }
+    private function checkAuthentication()
+    {
+        // Vérifier si l'utilisateur est authentifié en tant qu'administrateur
+        if (!isset($_SESSION['email'])) {
+            // Rediriger vers la page de connexion si non authentifié
+            header('Location: ../../views/Educateur/login.php');
+            exit();
+        }
     }
 
     public function index(){
@@ -39,7 +50,7 @@ class AddEducateurController
                     $email, $hmot_de_passe, $est_administrateur  == "oui" ? 1 : 0);
                 if ($this->educateurDAO->create($educateur)) {
                     // Rediriger vers la page d'accueil après l'ajout
-                    header('Location:HomeController.php');
+                    header('Location:../../views/home.php');
                     exit();
                 } else {
                     // Gérer les erreurs d'ajout de l'educateur

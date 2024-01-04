@@ -8,13 +8,14 @@
 </head>
 <body>
 <h1>Supprimer un licencie</h1>
-<a href="../../controllers/categorieControllers/HomeController.php">Retour à la liste des contacts</a>
 
 <?php if ($licencie): ?>
-    <p>Voulez-vous vraiment supprimer le contact "<?php echo $licencie->getNom(); ?> " ?</p>
+    <p>Voulez-vous vraiment supprimer le licencie "<?php echo $licencie->getNom(); ?> " ?</p>
     <form action="../../controllers/licencieControllers/DeleteLicencieController.php?id=<?php echo $licencie->getId(); ?>" method="post">
         <input type="submit" value="Oui, Supprimer">
     </form>
+    <a href="../../views/home.php">Non , retour a l'accueil</a>
+
 <?php else: ?>
     <p>Le contact n'a pas été trouvé.</p>
 <?php endif; ?>

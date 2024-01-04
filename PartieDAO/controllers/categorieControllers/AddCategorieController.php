@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 class AddCategorieController {
     private $categorieDAO;
 
@@ -7,8 +9,18 @@ class AddCategorieController {
     }
 
     public function index() {
-    // Inclure la vue pour afficher le formulaire d'ajout de contact
+        $this->checkAuthentication();
+        // Inclure la vue pour afficher le formulaire d'ajout de contact
         include('../../views/Categories/add_categorie.php');
+    }
+    private function checkAuthentication()
+    {
+        // Vérifier si l'utilisateur est authentifié en tant qu'administrateur
+        if (!isset($_SESSION['email'])) {
+            // Rediriger vers la page de connexion si non authentifié
+            header('Location: ../../views/Educateur/login.php');
+            exit();
+        }
     }
     
     public function addCategorie() {
@@ -26,7 +38,7 @@ class AddCategorieController {
             // Appeler la méthode du modèle (ContactDAO) pour ajouter le contact
             if ($this->categorieDAO->create($nouvCategorie)) {
                 // Rediriger vers la page d'accueil après l'ajout
-                header('Location:HomeController.php');
+                header('Location:../../views/home.php');
                 exit();
             } else {
                 // Gérer les erreurs d'ajout de contact

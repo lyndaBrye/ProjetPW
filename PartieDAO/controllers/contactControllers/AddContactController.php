@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require_once("../../config/config.php");
 require_once("../../classes/models/Connexion.php");
 require_once("../../classes/models/ContactModel.php");
@@ -11,7 +13,18 @@ class AddContactController {
         $this->contactDAO = $contactDAO;
     }
 
+    private function checkAuthentication()
+    {
+        // Vérifier si l'utilisateur est authentifié en tant qu'administrateur
+        if (!isset($_SESSION['email'])) {
+            // Rediriger vers la page de connexion si non authentifié
+            header('Location: ../../views/Educateur/login.php');
+            exit();
+        }
+    }
     public function index() {
+        $this->checkAuthentication();
+
         // Inclure la vue pour afficher le formulaire d'ajout de contact
         include('../../views/Contact/add_contact.php');
     }
@@ -32,7 +45,7 @@ class AddContactController {
             // Appeler la méthode du modèle (ContactDAO) pour ajouter le contact
             if ($this->contactDAO->create($nouveauContact)) {
                 // Rediriger vers la page d'accueil après l'ajout
-                header('Location: HomeController.php');
+                header('Location: ../../views/home.php');
                 exit();
             } else {
                 // Gérer les erreurs d'ajout de contact

@@ -18,8 +18,13 @@
             <a class="navbar-brand" href="#">
                 Club Sportif
             </a>
-            <a class="" href="Educateur/logout.php"> Deconnexion</a>
+
         </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a class="nav navbar-nav navbar-right" href="Educateur/logout.php"> Deconnexion</a></li>
+            </ul>
+<div
         <!-- Collect the nav links, forms, and other content for toggling -->
     </div><!-- /.container-fluid -->
 </nav>
@@ -60,15 +65,12 @@
             success: function (data) {
                 $('#dashboard-content').html(data);
               //  attachLicencieEvents();
-
             },
             error: function () {
                 alert('Erreur lors du chargement du contenu de Licencié.');
             }
         });
     }
-
-
 
     function loadContactContent() {
         $.ajax({

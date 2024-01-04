@@ -1,9 +1,25 @@
 <?php
+session_start();
+
 class EditContactController {
     private $contactDAO;
 
     public function __construct(ContactDAO $contactDAO) {
         $this->contactDAO = $contactDAO;
+    }
+    private function checkAuthentication()
+    {
+        // Vérifier si l'utilisateur est authentifié en tant qu'administrateur
+        if (!isset($_SESSION['email'])) {
+            // Rediriger vers la page de connexion si non authentifié
+            header('Location: ../../views/Educateur/login.php');
+            exit();
+        }
+    }
+    public function index() {
+        $this->checkAuthentication();
+        // Inclure la vue pour afficher le formulaire d'ajout de contact
+        include('../../views/Contact/edit_contact.php');
     }
 
     public function editContact($contactId) {
@@ -31,7 +47,7 @@ class EditContactController {
             // Appeler la méthode du modèle (ContactDAO) pour mettre à jour le contact
             if ($this->contactDAO->update($contact)) {
                 // Rediriger vers la page de détails du contact après la modification
-                header('Location:HomeController.php?id=' . $contactId);
+                header('Location:../../views/home.php?id=' . $contactId);
                 exit();
             } else {
                 // Gérer les erreurs de mise à jour du contact

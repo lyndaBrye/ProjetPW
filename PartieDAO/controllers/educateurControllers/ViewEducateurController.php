@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 class ViewEducateurController
 {
@@ -7,6 +8,21 @@ class ViewEducateurController
     public function __construct(EducateurDAO $educateurDAO)
     {
         $this->educateurDAO = $educateurDAO;
+    }
+    private function checkAuthentication()
+    {
+        // Vérifier si l'utilisateur est authentifié en tant qu'administrateur
+        if (!isset($_SESSION['email'])) {
+            // Rediriger vers la page de connexion si non authentifié
+            header('Location: ../../views/Educateur/login.php');
+            exit();
+        }
+    }
+    public function index() {
+        $this->checkAuthentication();
+
+        // Inclure la vue pour afficher le formulaire d'ajout de contact
+        include('../../views/Educateur/view_educateur.php');
     }
 
     public function viewEducateur($id)

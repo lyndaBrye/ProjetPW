@@ -1,11 +1,26 @@
 <?php
+session_start();
+
 class DeleteCategorieController {
     private $categorieDAO;
 
     public function __construct(CategorieDAO $categorieDAO) {
         $this->categorieDAO = $categorieDAO;
     }
-
+    public function index() {
+        $this->checkAuthentication();
+        // Inclure la vue pour afficher le formulaire d'ajout de contact
+        include('../../views/Categories/delete_categorie.php');
+    }
+    private function checkAuthentication()
+    {
+        // Vérifier si l'utilisateur est authentifié en tant qu'administrateur
+        if (!isset($_SESSION['email'])) {
+            // Rediriger vers la page de connexion si non authentifié
+            header('Location: ../../views/Educateur/login.php');
+            exit();
+        }
+    }
     public function deleteCategorie($id) {
         // Récupérer le contact à supprimer en utilisant son ID
         $categories = $this->categorieDAO->getById($id);
@@ -20,7 +35,7 @@ class DeleteCategorieController {
             // Supprimer le contact en appelant la méthode du modèle (ContactDAO)
             if ($this->categorieDAO->deleteById($id)) {
                 // Rediriger vers la page d'accueil après la suppression
-                header('Location:HomeController.php');
+                header('Location:../../views/home.php');
                 exit();
             } else {
                 // Gérer les erreurs de suppression du contact

@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>Supprimer un licencie</h1>
-<a href="../../controllers/educateurControllers/HomeController.php">Retour à la liste des edu</a>
+<a href="../../views/home.php">Accueil</a>
 
 <?php if ($educateur): ?>
     <p>Voulez-vous vraiment supprimer l educateur  "<?php echo $educateur->getIdEducateur(); ?> " ?</p>

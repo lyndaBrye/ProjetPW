@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 class AddLicencieController {
     private $licencieDAO;
     private $contactDAO;
@@ -14,12 +16,21 @@ class AddLicencieController {
         $nombreAleatoire = str_pad(mt_rand(100, 999), 3, '0', STR_PAD_LEFT);
         return $initiales  . $nombreAleatoire;
     }
+    private function checkAuthentication()
+    {
+        // Vérifier si l'utilisateur est authentifié en tant qu'administrateur
+        if (!isset($_SESSION['email'])) {
+            // Rediriger vers la page de connexion si non authentifié
+            header('Location: ../../views/Educateur/login.php');
+            exit();
+        }
+    }
 
     public function index() {
         // Récupérer la liste des contacts et des catégories
         $contacts = $this->contactDAO->getAll();
         $categories = $this->categorieDAO->getAll();
-
+    $this->checkAuthentication();
         // Inclure la vue pour afficher le formulaire d'ajout de licencié
         include('../../views/Licencies/add_licencie.php');
     }
@@ -47,7 +58,7 @@ class AddLicencieController {
             // Appeler la méthode du modèle (LicencieDAO) pour ajouter le licencié
             if ($this->licencieDAO->create($nouveauLicencie)) {
                 // Rediriger vers la page d'accueil après l'ajout
-                header('Location:HomeController.php');
+                header('Location: ../../views/home.php');
                 exit();
             } else {
                 // Gérer les erreurs d'ajout de licencié

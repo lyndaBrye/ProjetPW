@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Détails du licencie</h1>
-    <a href="../../controllers/licencieControllers/HomeController.php">Retour à la liste des licencies</a>
+    <a href="../../views/home.php">Accueil</a>
 
     <?php if ($licencie): ?>
         <ul>
