@@ -16,7 +16,7 @@
         <input type="submit" value="Oui, Supprimer">
     </form>
 <?php else: ?>
-    <p>La categorie n'a pas été trouvé.</p>
+    <p>La categorie n'a pas été trouvee.</p>
 <?php endif; ?>
 
 </body>
