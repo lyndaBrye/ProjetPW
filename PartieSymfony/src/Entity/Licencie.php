@@ -14,44 +14,28 @@ class Licencie
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $numero_licence = null;
-
-    #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
     #[ORM\Column(length: 255)]
     private ?string $prenom = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $numero_licencie = null;
+
     #[ORM\ManyToOne(inversedBy: 'licencie_id')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Categorie $categorie_id = null;
+
+    #[ORM\ManyToOne(inversedBy: 'licencies')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Contact $contact_id = null;
 
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Categorie $categorie_id = null;
+    #[ORM\OneToOne(mappedBy: 'licencie_id', cascade: ['persist', 'remove'])]
+    private ?Educateur $educateur_id = null;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function setId(int $id): static
-    {
-        $this->id = $id;
-
-        return $this;
-    }
-
-    public function getNumeroLicence(): ?string
-    {
-        return $this->numero_licence;
-    }
-
-    public function setNumeroLicence(string $numero_licence): static
-    {
-        $this->numero_licence = $numero_licence;
-
-        return $this;
     }
 
     public function getNom(): ?string
@@ -78,14 +62,14 @@ class Licencie
         return $this;
     }
 
-    public function getContactId(): ?Contact
+    public function getNumeroLicencie(): ?string
     {
-        return $this->contact_id;
+        return $this->numero_licencie;
     }
 
-    public function setContactId(?Contact $contact_id): static
+    public function setNumeroLicencie(string $numero_licencie): static
     {
-        $this->contact_id = $contact_id;
+        $this->numero_licencie = $numero_licencie;
 
         return $this;
     }
@@ -98,6 +82,40 @@ class Licencie
     public function setCategorieId(?Categorie $categorie_id): static
     {
         $this->categorie_id = $categorie_id;
+
+        return $this;
+    }
+
+    public function getContactId(): ?Contact
+    {
+        return $this->contact_id;
+    }
+
+    public function setContactId(?Contact $contact_id): static
+    {
+        $this->contact_id = $contact_id;
+
+        return $this;
+    }
+
+    public function getEducateurId(): ?Educateur
+    {
+        return $this->educateur_id;
+    }
+
+    public function setEducateurId(?Educateur $educateur_id): static
+    {
+        // unset the owning side of the relation if necessary
+        if ($educateur_id === null && $this->educateur_id !== null) {
+            $this->educateur_id->setLicencieId(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($educateur_id !== null && $educateur_id->getLicencieId() !== $this) {
+            $educateur_id->setLicencieId($this);
+        }
+
+        $this->educateur_id = $educateur_id;
 
         return $this;
     }

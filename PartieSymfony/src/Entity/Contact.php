@@ -30,9 +30,13 @@ class Contact
     #[ORM\OneToMany(mappedBy: 'contact_id', targetEntity: Licencie::class)]
     private Collection $licencie_id;
 
+    #[ORM\OneToMany(mappedBy: 'contact_id', targetEntity: Licencie::class)]
+    private Collection $licencies;
+
     public function __construct()
     {
         $this->licencie_id = new ArrayCollection();
+        $this->licencies = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -119,6 +123,36 @@ class Contact
             // set the owning side to null (unless already changed)
             if ($licencieId->getContactId() === $this) {
                 $licencieId->setContactId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Licencie>
+     */
+    public function getLicencies(): Collection
+    {
+        return $this->licencies;
+    }
+
+    public function addLicency(Licencie $licency): static
+    {
+        if (!$this->licencies->contains($licency)) {
+            $this->licencies->add($licency);
+            $licency->setContactId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLicency(Licencie $licency): static
+    {
+        if ($this->licencies->removeElement($licency)) {
+            // set the owning side to null (unless already changed)
+            if ($licency->getContactId() === $this) {
+                $licency->setContactId(null);
             }
         }
 
