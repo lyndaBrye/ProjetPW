@@ -7,7 +7,7 @@ class EducateurDAO {
     public function create(EducateurModel $educateur) {
         try {
             $licencie = $educateur->getLicenceID()->getId();
-            $stmt = $this->connexion->pdo->prepare("INSERT INTO educateurs (licencie_id, email, mot_de_passe, est_administrateur) VALUES (?, ?, ?, ?)");
+            $stmt = $this->connexion->pdo->prepare("INSERT INTO educateurs (licencie_id_id, email, mot_de_passe, est_administrateur) VALUES (?, ?, ?, ?)");
             $stmt->execute([
                 $licencie,
                 $educateur->getEmail(),
@@ -26,7 +26,7 @@ class EducateurDAO {
             $stmt->execute([$id]);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             $licencieDAO= new LicencieDAO($this->connexion);
-            $licencie =$licencieDAO->getById($row['licencie_id']);
+            $licencie =$licencieDAO->getById($row['licencie_id_id']);
             if ($row) {
                 return new EducateurModel($row['id'],
                     $licencie,
@@ -63,7 +63,7 @@ class EducateurDAO {
             $educateurs = [];
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $licencieDAO= new LicencieDAO($this->connexion);
-                $licencie =$licencieDAO->getById($row['licencie_id']);
+                $licencie =$licencieDAO->getById($row['licencie_id_id']);
                 $educateurs[] = new EducateurModel(
                     $row['id'],
                     $licencie,

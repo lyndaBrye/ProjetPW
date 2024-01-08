@@ -29,7 +29,7 @@ class AddEducateurController
         try {
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Récupérer les données du formulaire
-                $licencie_id = $_POST['licencie_id'];
+                $licencie_id = $_POST['licencie_id_id'];
                 $licencie= $this->licencieDAO->getById($licencie_id);
                 $email = $_POST['email'];
                 $mot_de_passe = $_POST['mot_de_passe'];

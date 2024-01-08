@@ -43,8 +43,8 @@
         <input class="span3" type="text" id="prenom" name="prenom" value="<?= $licencie->getPrenom(); ?>" required><br>
 
 
-        <label for="contact_id">Contact :</label>
-        <select name="contact_id" id="contact_id" >
+        <label for="contact_id_id">Contact :</label>
+        <select name="contact_id_id" id="contact_id_id" >
             <?php
             // Assurez-vous que $contacts est une liste d'objets Contact
 
@@ -54,9 +54,9 @@
             }
             ?>
         </select>
-        <label for="categorie_id">Categorie :</label>
+        <label for="categorie_id_id">Categorie :</label>
 
-        <select name="categorie_id" id="categorie_id">
+        <select name="categorie_id_id" id="categorie_id_id">
             <?php
             // Assurez-vous que $contacts est une liste d'objets Contact
 

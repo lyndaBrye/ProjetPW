@@ -12,7 +12,7 @@ class LicencieDAO
         try {
             $contactId = $licencie->getcontactID()->getId();
             $categorieId = $licencie->getcategorieID()->getId();
-            $stmt = $this->connexion->pdo->prepare("INSERT INTO licencies (numero_licence, nom, prenom, contact_id, categorie_id) VALUES (?, ?, ?, ?, ?)");
+            $stmt = $this->connexion->pdo->prepare("INSERT INTO licencies (numero_licence, nom, prenom, contact_id_id, categorie_id_id) VALUES (?, ?, ?, ?, ?)");
             $stmt->execute([
                 $licencie->getNumeroLicence(),
                 $licencie->getNom(),
@@ -34,8 +34,8 @@ class LicencieDAO
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             $contactDAO= new ContactDAO($this->connexion);
             $categorieDAO= new CategorieDAO($this->connexion);
-            $contact =$contactDAO->getById($row['contact_id']);
-            $categorie=$categorieDAO->getById($row['categorie_id']);
+            $contact =$contactDAO->getById($row['contact_id_id']);
+            $categorie=$categorieDAO->getById($row['categorie_id_id']);
 
             if ($row) {
                 return new LicencieModel(
@@ -63,8 +63,8 @@ class LicencieDAO
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $contactDAO= new ContactDAO($this->connexion);
                 $categorieDAO= new CategorieDAO($this->connexion);
-                $contact =$contactDAO->getById($row['contact_id']);
-                $categorie=$categorieDAO->getById($row['categorie_id']);
+                $contact =$contactDAO->getById($row['contact_id_id']);
+                $categorie=$categorieDAO->getById($row['categorie_id_id']);
                 $licencie[] = new LicencieModel(
                     $row['id'],
                     $row['numero_licence'],
@@ -86,7 +86,7 @@ class LicencieDAO
     // MÃ©thode pour mettre Ã  jour un licencie
     public function update(LicencieModel $licencie) {
         try {
-            $stmt = $this->connexion->pdo->prepare("UPDATE licencies SET nom = ?, prenom = ?, contact_id = ?, categorie_id = ? WHERE id = ?");
+            $stmt = $this->connexion->pdo->prepare("UPDATE licencies SET nom = ?, prenom = ?, contact_id_id = ?, categorie_id_id = ? WHERE id = ?");
             $stmt->execute([
                // $licencie->getNumeroLicence(),
                 $licencie->getNom(),

@@ -45,8 +45,8 @@
     <!-- Autres champs à ajouter selon vos besoins -->
 
 
-    <label for="categorie_id">Catégorie :</label>
-    <select name="categorie_id" id="categorie_id">
+    <label for="categorie_id_id">Catégorie :</label>
+    <select name="categorie_id_id" id="categorie_id_id">
         <?php foreach ($categories as $categorie): ?>
             <option value="<?php echo $categorie->getId(); ?>">
                 <?php echo $categorie->getNom(); ?>
@@ -54,8 +54,8 @@
         <?php endforeach; ?>
     </select><br>
 
-    <label for="contact_id">Nom et prenoms du contact  :</label>
-    <select name="contact_id" id="contact_id">
+    <label for="contact_id_id">Nom et prenoms du contact  :</label>
+    <select name="contact_id_id" id="contact_id_id">
         <?php foreach ($contacts as $contact): ?>
             <option value="<?php echo $contact->getId(); ?>">
                 <?php echo $contact->getNom().' '.$contact->getPrenom(); ?>

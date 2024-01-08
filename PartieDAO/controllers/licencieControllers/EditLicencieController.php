@@ -45,8 +45,8 @@ class EditLicencieController {
           //  $numero_licence= $_POST['numero_licence'];
             $nom = $_POST['nom'];
             $prenom = $_POST['prenom'];
-            $categorie_id = $_POST['categorie_id'];
-            $contact_id = $_POST['contact_id'];
+            $categorie_id = $_POST['categorie_id_id'];
+            $contact_id = $_POST['contact_id_id'];
             $contact = $this->contactDAO->getById($contact_id);
             $categorie = $this->categorieDAO->getById($categorie_id);
 

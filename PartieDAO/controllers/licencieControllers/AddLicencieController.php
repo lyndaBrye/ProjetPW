@@ -43,8 +43,8 @@ class AddLicencieController {
             $nom = $_POST['nom'];
             $prenom = $_POST['prenom'];
             $numeroLicence = $this->genererNumeroLicence($nom, $prenom);
-            $contactId = $_POST['contact_id'];
-            $categorieId = $_POST['categorie_id'];
+            $contactId = $_POST['contact_id_id'];
+            $categorieId = $_POST['categorie_id_id'];
 
             // Récupérer l'objet Contact associé à l'ID
             $contact = $this->contactDAO->getById($contactId);
