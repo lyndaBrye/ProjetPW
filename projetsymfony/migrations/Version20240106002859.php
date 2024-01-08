@@ -24,6 +24,7 @@ final class Version20240106002859 extends AbstractMigration
             id INT AUTO_INCREMENT NOT NULL,
             date_envoi DATETIME DEFAULT NULL,
             objet VARCHAR(255) DEFAULT NULL,
+            message VARCHAR(255) DEFAULT NULL,
             expediteur_id INT DEFAULT NULL,
             PRIMARY KEY(id)
         ) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');

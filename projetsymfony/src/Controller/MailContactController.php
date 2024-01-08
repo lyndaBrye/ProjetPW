@@ -8,9 +8,9 @@ use App\Repository\LicenciesRepository;
 use App\Repository\MailContactRepository;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Routing\Annotation\Route;
@@ -59,12 +59,12 @@ class MailContactController extends AbstractController
             'attr' => [
                 'placeholder' => 'Objet...',
             ]])
-          /*  ->add('message', TextareaType::class, [
+            ->add('message', TextareaType::class, [
             'required' => true,
             'label' => 'Message: ',
             'attr' => [
                 'placeholder' => 'Entrer votre message ici..',
-            ]])*/->add('destinataire', ChoiceType::class, [
+            ]])->add('destinataire', ChoiceType::class, [
             'label' => 'Destinataire: ',
             'choices' => $categories,
             'choice_label' => 'nom',
@@ -79,7 +79,7 @@ class MailContactController extends AbstractController
             $data = $form->getData();
             $mail  = new MailContact();
             $mail->setObjet($data['objet']);
-         //   $mail->setMessage($data['message']);
+           $mail->setMessage($data['message']);
             $now = new DateTime();
             $mail->setDateEnvoie($now);
 

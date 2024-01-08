@@ -5,10 +5,8 @@ namespace App\Controller;
 use App\Entity\MailContact;
 use App\Entity\MailEdu;
 use App\Repository\CategoriesRepository;
-use App\Repository\ContactsRepository;
 use App\Repository\EducateursRepository;
-use App\Repository\LicenciesRepository;
-use App\Repository\MailContactRepository;
+
 use App\Repository\MailEduRepository;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,24 +21,17 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MailEducateurController extends AbstractController
 {
-    private MailContactRepository $mailContactRepository;
     private MailEduRepository $mailEduRepository;
-    private ContactsRepository $contactRepository;
     private  EducateursRepository $educateursRepository;
     private CategoriesRepository $categorieRepository;
 
 
     public function  __construct(
-        MailContactRepository $mailContactRepository,
         CategoriesRepository $categorieRepository,
         EducateursRepository $educateursRepository,
-        ContactsRepository $contactRepository,
         MailEduRepository $mailEduRepository
     ){
-        $this->mailContactRepository=$mailContactRepository;
         $this->mailEduRepository=$mailEduRepository;
-
-        $this->contactRepository=$contactRepository;
         $this->categorieRepository=$categorieRepository;
         $this->educateursRepository=$educateursRepository;
 
@@ -56,8 +47,6 @@ class MailEducateurController extends AbstractController
 
     }
 
-
-
     #[Route(path: '/mail/send', name: 'app_send_mail_educateur')]
     public function sendMailEducateur(Request $request): Response {
         $educateurs = $this->educateursRepository->findAll();
@@ -67,12 +56,12 @@ class MailEducateurController extends AbstractController
             'attr' => [
                 'placeholder' => 'Objet...',
             ]])
-          /*  ->add('message', TextareaType::class, [
+            ->add('message', TextareaType::class, [
             'required' => true,
             'label' => 'Message: ',
             'attr' => [
                 'placeholder' => 'Entrer votre message ici..',
-            ]])*/
+            ]])
             ->add('destinataire', ChoiceType::class, [
             'label' => 'Destinataire: ',
             'choices' => $educateurs,
@@ -88,7 +77,7 @@ class MailEducateurController extends AbstractController
             $data = $form->getData();
             $mail  = new MailEdu();
             $mail->setObjet($data['objet']);
-          //  $mail->setMessage($data['message']);
+            $mail->setMessage($data['message']);
             $now = new DateTime();
             $mail->setDateEnvoi($now);
 

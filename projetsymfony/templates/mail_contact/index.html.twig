@@ -17,6 +17,9 @@
                 Date
             </td>
             <td>
+                Objet
+            </td>
+            <td>
                 Message
             </td>
             <td>
@@ -36,6 +39,9 @@
             </td>
             <td>
                 {{ mail.objet }}
+            </td>
+            <td>
+                {{ mail.message }}
             </td>
             <td>
                 {% for desti in mail.destinataire %}

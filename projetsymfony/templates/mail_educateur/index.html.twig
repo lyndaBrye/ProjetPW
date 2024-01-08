@@ -17,6 +17,9 @@
                     Date
                 </td>
                 <td>
+                    Objet
+                </td>
+                <td>
                     Message
                 </td>
                 <td>
@@ -33,6 +36,9 @@
                 <tr>
                     <td>
                         {{ mail.dateEnvoi| date('d/m/Y') }}
+                    </td>
+                    <td>
+                        {{ mail.message }}
                     </td>
                     <td>
                         {{ mail.objet }}

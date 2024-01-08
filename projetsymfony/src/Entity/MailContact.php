@@ -31,6 +31,9 @@ class MailContact
     #[ORM\JoinColumn(name: 'expediteur_id')]
     private ?Educateurs $expediteur = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $message = null;
+
 
     public function __construct()
     {
@@ -94,6 +97,18 @@ class MailContact
     public function setExpediteur(?Educateurs $expediteur): static
     {
         $this->expediteur = $expediteur;
+
+        return $this;
+    }
+
+    public function getMessage(): ?string
+    {
+        return $this->message;
+    }
+
+    public function setMessage(string $message): static
+    {
+        $this->message = $message;
 
         return $this;
     }

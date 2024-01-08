@@ -29,6 +29,9 @@ class MailEdu
     #[ORM\ManyToOne(inversedBy: 'mailEduEnvoye')]
     private ?Educateurs $expediteur = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $message = null;
+
     public function __construct()
     {
         $this->destinataire = new ArrayCollection();
@@ -95,6 +98,18 @@ class MailEdu
     public function setExpediteur(?Educateurs $expediteur): static
     {
         $this->expediteur = $expediteur;
+
+        return $this;
+    }
+
+    public function getMessage(): ?string
+    {
+        return $this->message;
+    }
+
+    public function setMessage(string $message): static
+    {
+        $this->message = $message;
 
         return $this;
     }
