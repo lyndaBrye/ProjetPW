@@ -31,12 +31,14 @@ class AuthentificationController {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $email = $_POST['email'];
             $motDePasse = $_POST['mot_de_passe'];
+            session_start();
 
             try {
                 $educateur = $this->educateurDAO->getByEmail($email);
 
                 if ($educateur && password_verify($motDePasse, $educateur->getMotDePasse()) && $educateur->getEstAdministrateur()) {
                     // Authentification réussie, enregistrez les informations de l'éducateur dans la session
+
                     $_SESSION['id'] = $educateur->getIdEducateur();
                     $_SESSION['email'] = $educateur->getEmail();
 

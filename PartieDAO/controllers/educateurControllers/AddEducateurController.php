@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 class AddEducateurController
 {
     private $educateurDAO;
@@ -21,7 +20,8 @@ class AddEducateurController
     }
 
     public function index(){
-    $licencies = $this->licencieDAO->getAll();
+        $this->checkAuthentication();
+        $licencies = $this->licencieDAO->getAll();
     include ('../../views/Educateur/add_educateur.php');
 }
 
@@ -47,7 +47,9 @@ class AddEducateurController
                 // Hasher le mot de passe
                 $hmot_de_passe = password_hash($mot_de_passe, PASSWORD_DEFAULT);
                 $educateur = new EducateurModel("", $licencie,
-                    $email, $hmot_de_passe, $est_administrateur  == "oui" ? 1 : 0);
+                    $email,
+                    $hmot_de_passe,
+                    $est_administrateur  == "oui" ? 1 : 0);
                 if ($this->educateurDAO->create($educateur)) {
                     // Rediriger vers la page d'accueil après l'ajout
                     header('Location:../../views/home.php');

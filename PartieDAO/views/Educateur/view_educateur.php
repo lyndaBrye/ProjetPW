@@ -46,10 +46,6 @@
                 <th>Statut licencie</th>
                 <th>Informations sur le contact</th>
                 <th>Categorie</th>
-
-
-
-                <th>Action</th>
             </tr>
             </thead>
             <tbody id="form-list-client-body">
