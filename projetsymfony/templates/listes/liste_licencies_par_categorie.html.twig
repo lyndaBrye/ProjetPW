@@ -1,0 +1,22 @@
+{# templates/listes/liste_licencies_par_categorie.html.twig #}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des Licenciés par Catégorie</title>
+</head>
+<body>
+    <h1>Liste des Licenciés par Catégorie</h1>
+
+    <h2>Catégorie : {{ categories.nom }}</h2>
+
+    <ul>
+        {% for licencie in licencies %}
+            <li>{{ licencie.getNom() }}
+                {{ licencie.getPrenom() }}
+                {{ licencie.getNumeroLicence() }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

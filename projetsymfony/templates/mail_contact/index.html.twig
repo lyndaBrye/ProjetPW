@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MailContactController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <a href="{{ path('app_send_mail_contact') }}"> Envoyer un nouveau mail</a>
+    <table>
+        <thead>
+        <tr>
+            <td>
+                Date
+            </td>
+            <td>
+                Message
+            </td>
+            <td>
+                Destinataire
+            </td>
+            <td>
+                action
+            </td>
+        </tr>
+
+        </thead>
+        <tbody>
+        {% for mail in mails %}
+        <tr>
+            <td>
+                {{ mail.dateEnvoie| date('d/m/Y') }}
+            </td>
+            <td>
+                {{ mail.objet }}
+            </td>
+            <td>
+                {% for desti in mail.destinataire %}
+                    {{ desti.email }}
+                {% endfor %}
+            </td>
+            <td>
+            <td>
+            <a href="{{ path('app_mail_contact_delete', {'id':mail.id}) }}"> Supprimer</a>
+
+            </td>
+            </td>
+        </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+    <ul>
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+# config/routes.yaml
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+listByCategory:
+    path: /categories
+    controller: App\Controller\ListesController::listByCategory
+    methods: ['GET']
+
+listLicencieByCategory:
+    path: /categorie/{categorieId}/licencies
+    controller: App\Controller\ListesController::listLicencieByCategory
+    methods: ['GET']
+
+
+listContactByCategory:
+    path: '/categorie/{categorieId}/contacts'
+    controller: 'App\Controller\ListesController::listContactByCategory'
+    methods: ['GET']
+    requirements:
+        categorieId: '\d+'  # Assure-toi que l'ID de la catégorie est un nombre
