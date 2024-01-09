@@ -6,9 +6,11 @@ use App\Repository\EducateursRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: EducateursRepository::class)]
-class Educateurs
+class Educateurs implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -180,5 +182,34 @@ class Educateurs
         }
 
         return $this;
+    }
+
+    public function getPassword(): ?string
+    {
+        // TODO: Implement getPassword() method.
+        return $this->mot_de_passe;
+    }
+
+    public function getRoles(): array
+    {
+        $admin =$this->est_administrateur;
+        // TODO: Implement getRoles() method.
+        if ($admin==1){
+            $roles[]='ROLE_ADMIN';
+        }
+        $roles[]='ROLE_USER';
+        return array_unique($roles);
+
+    }
+
+    public function eraseCredentials(): void
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
+        // TODO: Implement getUserIdentifier() method.
     }
 }

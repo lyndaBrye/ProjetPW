@@ -22,3 +22,12 @@ listContactByCategory:
     methods: ['GET']
     requirements:
         categorieId: '\d+'  # Assure-toi que l'ID de la catégorie est un nombre
+
+
+app_login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+
+app_logout:
+    path: /logout
+    controller: App\Controller\SecurityController::logout
