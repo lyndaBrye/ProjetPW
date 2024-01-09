@@ -23,16 +23,13 @@ class MailEducateurController extends AbstractController
 {
     private MailEduRepository $mailEduRepository;
     private  EducateursRepository $educateursRepository;
-    private CategoriesRepository $categorieRepository;
 
 
     public function  __construct(
-        CategoriesRepository $categorieRepository,
         EducateursRepository $educateursRepository,
         MailEduRepository $mailEduRepository
     ){
         $this->mailEduRepository=$mailEduRepository;
-        $this->categorieRepository=$categorieRepository;
         $this->educateursRepository=$educateursRepository;
 
     }
@@ -81,8 +78,8 @@ class MailEducateurController extends AbstractController
             $now = new DateTime();
             $mail->setDateEnvoi($now);
 
-         //   $userId = $this->getUser()->getId();
-            $expediteur = $this->educateursRepository->findOneBy(['id'=> 4]);
+            $userId = $this->getUser();
+            $expediteur = $this->educateursRepository->findOneBy(['id'=> $userId]);
             $mail->setExpediteur($expediteur);
 
             foreach ($data['destinataire'] as $value) {

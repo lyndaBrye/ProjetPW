@@ -35,7 +35,7 @@ class MailContactController extends AbstractController
     #[Route('/mail/contact', name: 'app_mail_contact')]
     public function index(): Response
     {
-        //  $userId = $this->getUser()->getId();
+          $userId = $this->getUser();
         $mails = $this->mailContactRepository->findByContactId(4);
         return $this->render('mail_contact/index.html.twig', [
             'mails' => $mails,
@@ -83,9 +83,9 @@ class MailContactController extends AbstractController
             $now = new DateTime();
             $mail->setDateEnvoie($now);
 
-          //  $userId = $this->getUser()->getId(); a changer apres authentif
+            $userId = $this->getUser();
 
-            $expediteur = $this->educateursRepository->findOneBy(['id'=> 4]);
+            $expediteur = $this->educateursRepository->findOneBy(['id'=> $userId]);
             $mail->setExpediteur($expediteur);
 
             foreach ($data['destinataire'] as $categorie) {
