@@ -6,6 +6,8 @@ Pour cloner le projet en local sur votre machine, lancez la commande suivate:
 git clone https://github.com/lyndaBrye/ProjetPW.git
 
 
+
+
 Bade de donnees:
 -- Table des catégories
 CREATE TABLE categories (
@@ -29,10 +31,10 @@ CREATE TABLE licencies (
     numero_licence VARCHAR(20) UNIQUE NOT NULL,
     nom VARCHAR(50) NOT NULL,
     prenom VARCHAR(50) NOT NULL,
-    contact_id INT,
-    categorie_id INT,
-    FOREIGN KEY (contact_id) REFERENCES contacts(id),
-    FOREIGN KEY (categorie_id) REFERENCES categories(id)
+    contact_id_id INT,
+    categorie_id_id INT,
+    FOREIGN KEY (contact_id_id) REFERENCES contacts(id),
+    FOREIGN KEY (categorie_id_id) REFERENCES categories(id)
 );
 
 -- Table des éducateurs
@@ -41,6 +43,6 @@ CREATE TABLE educateurs (
     email VARCHAR(100) UNIQUE NOT NULL,
     mot_de_passe VARCHAR(255) NOT NULL,
     est_administrateur BOOLEAN NOT NULL,
-    licencie_id INT,
-    FOREIGN KEY (licencie_id) REFERENCES licencies(id)
+    licencie_id_id INT,
+    FOREIGN KEY (licencie_id_id) REFERENCES licencies(id)
 );
