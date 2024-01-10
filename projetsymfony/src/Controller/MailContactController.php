@@ -29,14 +29,14 @@ class MailContactController extends AbstractController
         $this->contactRepository=$contactRepository;
         $this->categorieRepository=$categorieRepository;
         $this->educateursRepository=$educateursRepository;
-
     }
 
     #[Route('/mail/contact', name: 'app_mail_contact')]
     public function index(): Response
     {
-          $userId = $this->getUser();
-        $mails = $this->mailContactRepository->findByContactId(4);
+          $userId = $this->getUser()->getId();
+        $mails = $this->mailContactRepository->findByContactId($userId);
+     //   dd($mails);
         return $this->render('mail_contact/index.html.twig', [
             'mails' => $mails,
         ]);
@@ -53,7 +53,8 @@ class MailContactController extends AbstractController
     #[Route(path: '/mail/contact/send', name: 'app_send_mail_contact')]
     public function sendMailContact(Request $request): Response {
         $categories = $this->categorieRepository->findAll();
-        $form = $this->createFormBuilder()->add('objet', TextType::class, [
+        $form = $this->createFormBuilder()
+            ->add('objet', TextType::class, [
             'label' => 'Objet: ',
             'required' => true,
             'attr' => [
@@ -64,7 +65,8 @@ class MailContactController extends AbstractController
             'label' => 'Message: ',
             'attr' => [
                 'placeholder' => 'Entrer votre message ici..',
-            ]])->add('destinataire', ChoiceType::class, [
+            ]])
+            ->add('destinataire', ChoiceType::class, [
             'label' => 'Destinataire: ',
             'choices' => $categories,
             'choice_label' => 'nom',
@@ -72,29 +74,23 @@ class MailContactController extends AbstractController
             'multiple' => true,
             'expanded' => false,
         ])->getForm();
-
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
             $mail  = new MailContact();
             $mail->setObjet($data['objet']);
-           $mail->setMessage($data['message']);
+            $mail->setMessage($data['message']);
             $now = new DateTime();
             $mail->setDateEnvoie($now);
-
-            $userId = $this->getUser();
-
+            $userId = $this->getUser()->getId();
             $expediteur = $this->educateursRepository->findOneBy(['id'=> $userId]);
             $mail->setExpediteur($expediteur);
-
             foreach ($data['destinataire'] as $categorie) {
                 $contacts = $this->contactRepository->getContactByCategorie($categorie->getId());
                 foreach ($contacts as $value) {
                     $mail->addDestinataire($value);
                 }
             }
-
             $this->mailContactRepository->send($mail);
             return $this->redirectToRoute('app_mail_contact');
         }

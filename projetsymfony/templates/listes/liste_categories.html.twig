@@ -11,7 +11,7 @@
     <ul>
         {% for categorie in categories %}
             <li>
-                <a href="{{ path('listLicencieByCategory', {'categorieId': categorie.id}) }}">
+                <a href="{{ path('app_categories', {'categorieId': categorie.id}) }}">
                     {{ categorie.nom }}
                 </a>
             </li>

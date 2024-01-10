@@ -5,10 +5,6 @@ controllers:
         namespace: App\Controller
     type: attribute
 
-listByCategory:
-    path: /categories
-    controller: App\Controller\ListesController::listByCategory
-    methods: ['GET']
 
 listLicencieByCategory:
     path: /categorie/{categorieId}/licencies

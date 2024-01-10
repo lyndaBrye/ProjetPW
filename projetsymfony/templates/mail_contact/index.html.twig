@@ -10,6 +10,8 @@
 
 <div class="example-wrapper">
     <a href="{{ path('app_send_mail_contact') }}"> Envoyer un nouveau mail</a>
+    <a href="{{ path('app_logout') }}"> deconnexion</a>
+
     <table>
         <thead>
         <tr>
@@ -44,9 +46,15 @@
                 {{ mail.message }}
             </td>
             <td>
-                {% for desti in mail.destinataire %}
-                    {{ desti.email }}
+
+                <ul>
+                    <li>
+                        {% for desti in mail.destinataire %}
+                        {{ desti.email }}{% if not loop.last %}, {% endif %}
+                    </li>
+                </ul>
                 {% endfor %}
+
             </td>
             <td>
             <td>

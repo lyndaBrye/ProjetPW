@@ -38,8 +38,8 @@ class MailEducateurController extends AbstractController
     #[Route('/mail/educateur', name: 'app_mail_educateur')]
     public function index(): Response
     {
-        //$userId = $this->getUser()->getId();
-        $mails = $this->mailEduRepository->getByEducateurId(4);
+        $userId = $this->getUser()->getId();
+        $mails = $this->mailEduRepository->getByEducateurId($userId);
         return $this->render('mail_educateur/index.html.twig', ["mails" => $mails]);
 
     }
@@ -78,7 +78,7 @@ class MailEducateurController extends AbstractController
             $now = new DateTime();
             $mail->setDateEnvoi($now);
 
-            $userId = $this->getUser();
+            $userId = $this->getUser()->getId();
             $expediteur = $this->educateursRepository->findOneBy(['id'=> $userId]);
             $mail->setExpediteur($expediteur);
 

@@ -45,6 +45,8 @@ class ListesController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
+    #[Route(path: '/categories', name: 'app_categories')]
+
     public function listByCategory(EntityManagerInterface $entityManager): Response
     {
         // Utilise directement $entityManager pour accéder à l'Entity Manager

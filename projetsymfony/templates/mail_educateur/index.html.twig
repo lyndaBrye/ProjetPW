@@ -26,10 +26,12 @@
                     Destinataire
                 </td>
                 <td>
+                    Expediteur
+                </td>
+                <td>
                     action
                 </td>
             </tr>
-
             </thead>
             <tbody>
             {% for mail in mails %}
@@ -43,9 +45,15 @@
                     <td>
                         {{ mail.objet }}
                     </td>
+
                     <td>
                         {% for desti in mail.destinataire %}
                             {{ desti.email }}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for desti in mail.expediteur %}
+                            {{ desti.expediteur }}
                         {% endfor %}
                     </td>
                     <td>
