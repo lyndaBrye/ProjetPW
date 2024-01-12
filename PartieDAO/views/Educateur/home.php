@@ -26,7 +26,6 @@
     <?php
     if (count($educateurs) > 0): ?>
         <table class="table table-bordered table-condensed table-hover">
-
         <thead>
                 <tr>
                     <th>Numero licencie</th>
@@ -37,6 +36,7 @@
                 <?php foreach ($educateurs as $educateur): ?>
                     <tr>
                         <td><?php echo $educateur->getLicenceID()->getNumeroLicence(); ?></td>
+                        <td><?php echo $educateur->getEmail(); ?></td>
 
                         <td>
                             <a href=".././controllers/educateurControllers/ViewEducateurController.php?id=<?php echo $educateur->getIdEducateur(); ?>" title="edit this user" class="btn btn-default btn-sm "> <i class="glyphicon glyphicon-eye-open text-primary"></i> </a>

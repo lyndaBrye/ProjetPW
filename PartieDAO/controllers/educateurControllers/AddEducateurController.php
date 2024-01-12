@@ -46,7 +46,8 @@ class AddEducateurController
                 }
                 // Hasher le mot de passe
                 $hmot_de_passe = password_hash($mot_de_passe, PASSWORD_DEFAULT);
-                $educateur = new EducateurModel("", $licencie,
+                $educateur = new EducateurModel(0,
+                    $licencie,
                     $email,
                     $hmot_de_passe,
                     $est_administrateur  == "oui" ? 1 : 0);

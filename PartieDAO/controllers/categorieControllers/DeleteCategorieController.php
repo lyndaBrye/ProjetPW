@@ -21,7 +21,8 @@ class DeleteCategorieController {
             exit();
         }
     }
-    public function deleteCategorie($id) {
+    public function deleteCategorie($id): void
+    {
         // Récupérer le contact à supprimer en utilisant son ID
         $categories = $this->categorieDAO->getById($id);
 

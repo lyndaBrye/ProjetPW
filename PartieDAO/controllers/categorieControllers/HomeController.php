@@ -3,7 +3,6 @@ session_start();
 
 class HomeController {
     private $categorieDAO;
-
     public function __construct(CategorieDAO $categorieDAO) {
         $this->categorieDAO = $categorieDAO;
     }
@@ -18,10 +17,7 @@ class HomeController {
     }
     public function index() {
         $this->checkAuthentication();
-
-        // RÃ©cupÃ©rer la liste de tous les contacts depuis le modÃ¨le
         $categories = $this->categorieDAO->getAll();
-
         // Inclure la vue pour afficher la liste des contacts
         include('../../views/Categories/home.php');
     }

@@ -48,7 +48,7 @@ class EducateurDAO {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($row) {
-                return new EducateurModel($row['id'], $row['licence_id'], $row['email'], $row['mot_de_passe'], $row['est_administrateur']);
+                return new EducateurModel($row['id'], $row['licence_id_id'], $row['email'], $row['mot_de_passe'], $row['est_administrateur']);
             } else {
                 return null;
             }
