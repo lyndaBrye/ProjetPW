@@ -2,9 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\MailContact;
+use App\Entity\Educateurs;
 use App\Entity\MailEdu;
-use App\Repository\CategoriesRepository;
 use App\Repository\EducateursRepository;
 
 use App\Repository\MailEduRepository;
@@ -23,8 +22,6 @@ class MailEducateurController extends AbstractController
 {
     private MailEduRepository $mailEduRepository;
     private  EducateursRepository $educateursRepository;
-
-
     public function  __construct(
         EducateursRepository $educateursRepository,
         MailEduRepository $mailEduRepository
@@ -43,6 +40,7 @@ class MailEducateurController extends AbstractController
         return $this->render('mail_educateur/index.html.twig', ["mails" => $mails]);
 
     }
+
 
     #[Route(path: '/mail/send', name: 'app_send_mail_educateur')]
     public function sendMailEducateur(Request $request): Response {
@@ -67,9 +65,7 @@ class MailEducateurController extends AbstractController
             'multiple' => true,
             'expanded' => false,
         ])->getForm();
-
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
             $mail  = new MailEdu();
@@ -77,18 +73,15 @@ class MailEducateurController extends AbstractController
             $mail->setMessage($data['message']);
             $now = new DateTime();
             $mail->setDateEnvoi($now);
-
             $userId = $this->getUser()->getId();
             $expediteur = $this->educateursRepository->findOneBy(['id'=> $userId]);
             $mail->setExpediteur($expediteur);
-
             foreach ($data['destinataire'] as $value) {
                 $mail->addDestinataire($value);
             }
             $this->mailEduRepository->send($mail);
             return $this->redirectToRoute('app_mail_educateur');
         }
-
         return $this->render('mail_educateur/addMessageEducateur.html.twig', [
             'form'=>$form->createView()
         ]);

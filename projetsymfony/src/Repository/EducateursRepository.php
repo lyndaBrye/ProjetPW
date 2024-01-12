@@ -21,6 +21,7 @@ class EducateursRepository extends ServiceEntityRepository
         parent::__construct($registry, Educateurs::class);
     }
 
+
 //    /**
 //     * @return Educateurs[] Returns an array of Educateurs objects
 //     */

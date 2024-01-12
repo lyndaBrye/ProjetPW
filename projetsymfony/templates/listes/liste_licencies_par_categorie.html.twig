@@ -1,22 +1,43 @@
 {# templates/listes/liste_licencies_par_categorie.html.twig #}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Liste des Licenciés par Catégorie</title>
-</head>
-<body>
-    <h1>Liste des Licenciés par Catégorie</h1>
+
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MailContactController!{% endblock %}
+
+{% block body %}
+
+
 
     <h2>Catégorie : {{ categories.nom }}</h2>
 
-    <ul>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">NumeroLicence</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prenom</th>
+        </tr>
+        </thead>
+        <tbody>
         {% for licencie in licencies %}
-            <li>{{ licencie.getNom() }}
-                {{ licencie.getPrenom() }}
-                {{ licencie.getNumeroLicence() }}
-            </li>
+            <tr>
+                 <th scope="row">{{ loop.index }}</th>
+
+                <td>{{ licencie.getNumeroLicence() }} </td>
+                <td>{{ licencie.getNom() }} </td>
+                <td> {{ licencie.getPrenom() }}</td>
+
+            </tr>
         {% endfor %}
-    </ul>
-</body>
-</html>
+        </tbody>
+    </table>
+
+{% endblock %}
+
+
+
+

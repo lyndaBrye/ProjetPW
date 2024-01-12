@@ -1,21 +1,32 @@
 {# templates/categorie/liste_categories.html.twig #}
+{% extends 'base.html.twig' %}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Liste des Catégories</title>
-</head>
-<body>
-    <h1>Liste des Catégories</h1>
+{% block title %}Hello MailContactController!{% endblock %}
 
-    <ul>
-        {% for categorie in categories %}
-            <li>
-                <a href="{{ path('app_categories', {'categorieId': categorie.id}) }}">
-                    {{ categorie.nom }}
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+{% block body %}
+
+
+    <div class="row mt-4">
+    {% for categorie in categories %}
+        <div class="col-md-4">
+            <div class="card border-primary mb-3" style="max-width: 18rem;">
+                <div class="card-header">{{ categorie.coderaccourci }}</div>
+                <div class="card-body text-primary">
+                    <h5 class="card-title">{{ categorie.nom }}</h5>
+                    <p class="card-text">
+                        <a href="{{ path('listLicencieByCategory', {'categorieId': categorie.id}) }}" class="card-link"> licencies </a>|<a href="{{ path('listContactByCategory', {'categorieId': categorie.id}) }}" class="card-link"> contacts </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        {% if loop.index % 3 == 0 %}
+            </div><div class="row">
+        {% endif %}
+    {% endfor %}
+    </div>
+
+
+
+
+{% endblock %}

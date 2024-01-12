@@ -9,65 +9,34 @@
 </style>
 
 <div class="example-wrapper">
-    <a href="{{ path('app_send_mail_contact') }}"> Envoyer un nouveau mail</a>
-    <a href="{{ path('app_logout') }}"> deconnexion</a>
+    <a href="{{ path('app_send_mail_contact') }}"> Envoyer un mail aux contacts</a>
 
-    <table>
-        <thead>
-        <tr>
-            <td>
-                Date
-            </td>
-            <td>
-                Objet
-            </td>
-            <td>
-                Message
-            </td>
-            <td>
-                Destinataire
-            </td>
-            <td>
-                action
-            </td>
-        </tr>
 
-        </thead>
-        <tbody>
-        {% for mail in mails %}
-        <tr>
-            <td>
-                {{ mail.dateEnvoie| date('d/m/Y') }}
-            </td>
-            <td>
-                {{ mail.objet }}
-            </td>
-            <td>
-                {{ mail.message }}
-            </td>
-            <td>
 
-                <ul>
-                    <li>
-                        {% for desti in mail.destinataire %}
-                        {{ desti.email }}{% if not loop.last %}, {% endif %}
-                    </li>
-                </ul>
-                {% endfor %}
-
-            </td>
-            <td>
-            <td>
-            <a href="{{ path('app_mail_contact_delete', {'id':mail.id}) }}"> Supprimer</a>
-
-            </td>
-            </td>
-        </tr>
-        {% endfor %}
-
-        </tbody>
-    </table>
-    <ul>
-    </ul>
 </div>
+    {% for mail in mails %}
+    <ol class="list-group ">
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">
+                    {{ mail.dateEnvoie| date('d/m/Y') }}| {% for desti in mail.destinataire %}
+                        {{ desti.email }}{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+
+
+
+                </div>
+
+                {{ mail.message }}
+            </div>
+            <div class="ms-2 me-auto">
+                {{ mail.objet }}
+            </div>
+            <span class="badge bg-primary rounded-pill">
+                <a href="{{ path('app_mail_contact_delete', {'id':mail.id}) }}"> Supprimer</a>
+            </span>
+        </li>
+
+    </ol>
+    {% endfor %}
 {% endblock %}

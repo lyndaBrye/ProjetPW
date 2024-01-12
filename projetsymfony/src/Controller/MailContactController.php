@@ -20,7 +20,6 @@ class MailContactController extends AbstractController
     private MailContactRepository $mailContactRepository;
     private ContactsRepository $contactRepository;
     private  EducateursRepository $educateursRepository;
-    private LicenciesRepository $licencieRepository;
     private CategoriesRepository $categorieRepository;
 
 

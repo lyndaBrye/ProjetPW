@@ -1,19 +1,42 @@
-{# templates/listes/liste_contacts_par_categorie.html.twig #}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Liste des Contacts par Catégorie</title>
-</head>
-<body>
-    <h1>Liste des Contacts par Catégorie</h1>
+{% extends 'base.html.twig' %}
 
-    <h2>Catégorie : {{ categorie.nom }}</h2>
+{% block title %}Hello MailContactController!{% endblock %}
 
-    <ul>
+{% block body %}
+
+
+
+    <h1>Catégorie : {{ categorie.nom }}</h1>
+    <br>
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prenom</th>
+            <th scope="col">Email</th>
+            <th scope="col">Telephone</th>
+        </tr>
+        </thead>
+        <tbody>
         {% for contact in contacts %}
-            <li>{{ contact.getNom() }} {{ contact.getPrenom() }} - {{ contact.getEmail() }} - {{ contact.getNumeroTel() }}</li>
+
+        <tr>
+            <th scope="row">{{ loop.index }}</th>
+
+            <td>{{ contact.getNom() }} </td>
+            <td>{{ contact.getPrenom() }}</td>
+            <td>{{ contact.getEmail() }} </td>
+            <td>{{ contact.getNumeroTel() }}</td>
+        </tr>
         {% endfor %}
-    </ul>
-</body>
-</html>
+        </tbody>
+    </table>
+
+
+
+
+{% endblock %}

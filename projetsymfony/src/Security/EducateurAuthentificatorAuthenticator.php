@@ -37,6 +37,7 @@ class EducateurAuthentificatorAuthenticator extends AbstractLoginFormAuthenticat
             ]
         );
     }
+
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
@@ -44,7 +45,7 @@ class EducateurAuthentificatorAuthenticator extends AbstractLoginFormAuthenticat
         }
 
         // For example:
-         return new RedirectResponse($this->urlGenerator->generate('app_mail_contact'));
+         return new RedirectResponse($this->urlGenerator->generate('listByCategory'));
        // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 

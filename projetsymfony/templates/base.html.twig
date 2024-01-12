@@ -3,20 +3,62 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <script defer src="assets/plugins/fontawesome/js/all.min.js"></script>
-
         <!-- App CSS -->
-        <link id="theme-style" rel="stylesheet" href="assets/css/portal.css">
-        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+
         {% block stylesheets %}
         {% endblock %}
 
-        {% block javascripts %}
-        {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+    {% block navbar %}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+                <!-- Logo ou titre de la navbar -->
+                <a class="navbar-brand" href="#">Club Sportif</a>
+
+                <!-- Bouton pour afficher la navbar sur les petits écrans -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Contenu de la navbar -->
+                <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('listByCategory') }}">Categories</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Message envoyes
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ path('app_mail_contact') }}">Contact</a></li>
+                                <li><a class="dropdown-item" href="{{ path('app_mail_educateur') }}">Educateurs</a></li>
+                            </ul>
+                        </li>
+
+
+
+                    </ul>
+
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_logout') }}">Deconnexion</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    {% endblock %}
+    {% block body %}{% endblock %}
+    {% block javascripts %}
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    {% endblock %}
     </body>
 </html>
