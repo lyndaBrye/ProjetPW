@@ -1,10 +1,12 @@
-
 <!DOCTYPE html>
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+<html>
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
 <?php /*if ($educateurs): */?>
 
 <nav class="navbar navbar-default navbar-static-top">
@@ -22,9 +24,9 @@
             </a>
 
             <a class="navbar-brand" href="#">
-          <!--  --><?php
-/*            echo $educateurs->getLicenceID()->getNom();
-            */?>
+                <!--  --><?php
+                /*            echo $educateurs->getLicenceID()->getNom();
+                            */?>
             </a>
 
         </div>
@@ -32,9 +34,9 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a class="nav navbar-nav navbar-right" href="Educateur/logout.php"> Deconnexion</a></li>
             </ul>
-<div
-        <!-- Collect the nav links, forms, and other content for toggling -->
-    </div><!-- /.container-fluid -->
+            <div
+            <!-- Collect the nav links, forms, and other content for toggling -->
+        </div><!-- /.container-fluid -->
 </nav>
 <div class="container-fluid main-container">
     <div class="col-md-2 sidebar" >
@@ -118,3 +120,6 @@
     }
 
 </script>
+</body>
+</html>
+<!------ Include the above in your HEAD tag ---------->

@@ -39,11 +39,7 @@
             <?php
             $count = 0;
             foreach ($licencie as $licence) :
-                if ($count >= 8) {
-                    echo '<tr class="hidden-row">';
-                } else {
-                    echo '<tr>';
-                }
+                echo '<tr class="contact-row">';
                 ?>
                 <td><?php echo $licence->getNumeroLicence(); ?></td>
                 <td><?php echo $licence->getNom(); ?></td>
@@ -68,11 +64,11 @@
         <ul class="pagination">
             <?php
             // Calcul du nombre de pages
-            $totalPages = ceil(count($licencie) / 8);
-            for ($i = 1; $i <= $totalPages; $i++) {
+            $count = count($licencie);
+            for ($i = 1; $i <= ceil($count / 8); $i++) {
                 echo '<li class="page-item">
-                <a class="page-link" href="#" onclick="loadPage(' . $i . ')">' . $i . '</a>
-                </li>';
+                         <a class="page-link" href="#" onclick="loadPage(' . $i . ')">' . $i . '</a>
+                         </li>';
             }
             ?>
         </ul>
@@ -106,14 +102,18 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <script>
+    $(document).ready(function () {
+        loadPage(1); // Load the first page initially
+    });
+
     function loadPage(page) {
         // Cacher toutes les lignes
-        $('tr').hide();
+        $('tr.contact-row').hide();
 
         // Afficher les lignes de la page spécifiée
         var startIndex = (page - 1) * 8;
         var endIndex = startIndex + 8;
-        $('tr').slice(startIndex, endIndex).show();
+        $('tr.contact-row').slice(startIndex, endIndex).show();
     }
 </script>
 

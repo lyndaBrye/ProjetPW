@@ -44,8 +44,8 @@
         <option value="oui">Oui</option>
     </select>
     <br><br>
-    <label for="licencie_id">Licencié :</label>
-    <select name="licencie_id" id="licencie_id">
+    <label for="licencie_id_id">Licencié :</label>
+    <select name="licencie_id_id" id="licencie_id_id">
         <?php foreach ($licencies as $licencie): ?>
             <option value="<?php echo $licencie->getId(); ?>">
                 <?php echo $licencie->getNumeroLicence(); ?>
