@@ -10,9 +10,6 @@
 
 <div class="example-wrapper">
     <a href="{{ path('app_send_mail_contact') }}"> Envoyer un mail aux contacts</a>
-
-
-
 </div>
     {% for mail in mails %}
     <ol class="list-group ">
@@ -22,9 +19,6 @@
                     {{ mail.dateEnvoie| date('d/m/Y') }}| {% for desti in mail.destinataire %}
                         {{ desti.email }}{% if not loop.last %}, {% endif %}
                     {% endfor %}
-
-
-
                 </div>
 
                 {{ mail.message }}
