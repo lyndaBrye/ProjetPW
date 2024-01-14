@@ -49,7 +49,6 @@ class EditLicencieController {
             $contact_id = $_POST['contact_id_id'];
             $contact = $this->contactDAO->getById($contact_id);
             $categorie = $this->categorieDAO->getById($categorie_id);
-
             // Valider les données du formulaire (ajoutez des validations si nécessaire)
 
             $licencie->setNom($nom);
@@ -57,8 +56,6 @@ class EditLicencieController {
         //    $licencie->setNumeroLicence($numero_licence);
             $licencie->setContactId($contact);
             $licencie->setCategorieId($categorie);
-
-
 
             // Appeler la méthode du modèle (CategorieDAO) pour mettre à jour la catégorie
             if ($this->licencieDAO->update($licencie)) {
