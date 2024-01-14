@@ -45,7 +45,9 @@ class EditCategorieController {
             // Appeler la méthode du modèle (CategorieDAO) pour mettre à jour la catégorie
             if ($this->categorieDAO->update($categorie)) {
                 // Rediriger vers la page de détails de la catégorie après la modification
-                header('Location: HomeController.php?id=' . $id);
+                header('Location:../../views/home.php');
+
+                //header(' Location: HomeController.php?id=' . $id);
                 exit();
             } else {
                 // Gérer les erreurs de mise à jour de la catégorie
