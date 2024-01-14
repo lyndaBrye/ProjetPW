@@ -47,14 +47,14 @@ class DeleteContactController {
         }
 
         // Inclure la vue pour afficher la confirmation de suppression du contact
-        include('../views/delete_contact.php');
+        include('../../views/Contact/delete_contact.php');
     }
 }
 
-require_once("../config/config.php");
-require_once("../classes/models/Connexion.php");
-require_once("../classes/models/ContactModel.php");
-require_once("../classes/dao/ContactDAO.php");
+require_once("../../config/config.php");
+require_once("../../classes/models/Connexion.php");
+require_once("../../classes/models/ContactModel.php");
+require_once("../../classes/dao/ContactDAO.php");
 $contactDAO=new ContactDAO(new Connexion());
 $controller=new DeleteContactController($contactDAO);
 $controller->deleteContact($_GET['id']);

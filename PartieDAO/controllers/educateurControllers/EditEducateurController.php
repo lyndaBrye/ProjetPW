@@ -34,17 +34,13 @@ class EditEducateurController
         }
         $licencies = $this->licencieDAO->getAll();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Récupérer les données du formulaire
- //           $licencie_id= $_POST['licencie_id'];
-   //         $mot_de_passe = $_POST['mot_de_passe'];
+
             $est_administrateur = $_POST['est_administrateur'];
             $email = $_POST['email'];
-            // Valider les données du formulaire (ajoutez des validations si nécessaire)
             $educateur->setEmail($email);
      //       $educateur->setLicenceID($licencie_id);
             $educateur->setEstAdministrateur($est_administrateur  == 'oui' ? 1 : 0);
        //     $educateur->setMotDePasse($mot_de_passe);
-            // Appeler la méthode du modèle (CategorieDAO) pour mettre à jour la catégorie
             if ($this->educateurDAO->update($educateur)) {
                 // Rediriger vers la page de détails de la catégorie après la modification
                 header('Location:../../views/home.php?id=' . $id);
