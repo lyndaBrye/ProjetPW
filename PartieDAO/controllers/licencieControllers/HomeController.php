@@ -38,7 +38,9 @@ class HomeController {
             // Vérifiez si le fichier a été correctement téléchargé
             if (empty($csvFile) || !file_exists($csvFile)) {
                 $_SESSION['import_message'] = "Erreur lors du téléchargement du fichier CSV.";
-               // header("Location: LicencieController.php"); // Redirigez vers la page principale ou une autre page en cas d'erreur
+                header('Location:  ../../views/home.php');
+
+                // header("Location: LicencieController.php"); // Redirigez vers la page principale ou une autre page en cas d'erreur
                 exit();
             }
 
