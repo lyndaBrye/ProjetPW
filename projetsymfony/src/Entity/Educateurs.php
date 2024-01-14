@@ -193,9 +193,9 @@ class Educateurs implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $admin =$this->est_administrateur;
         // TODO: Implement getRoles() method.
-        if ($admin==1){
+       /* if ($admin==1){
             $roles[]='ROLE_ADMIN';
-        }
+        }*/
         $roles[]='ROLE_USER';
         return array_unique($roles);
 

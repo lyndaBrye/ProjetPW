@@ -44,7 +44,17 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
     # - { path: ^/admin, roles: ROLE_ADMIN }
-    # - { path: ^/profile, roles: ROLE_USER }
+     - { path: ^/categories, roles: ROLE_USER }
+     - { path: ^/categorie/[0-9]+/licencies, roles: ROLE_USER }
+     - { path: ^/categorie/[0-9]+/contacts, roles: ROLE_USER }
+     - { path: ^/mail/contact, roles: ROLE_USER }
+     - { path: ^/mail/contact/delete/, roles: ROLE_USER }
+     - { path: ^/mail/contact/send', roles: ROLE_USER }
+     - { path: ^/mail/educateur/send', roles: ROLE_USER }
+     - { path: ^/mail/educateur', roles: ROLE_USER }
+     - { path: ^/mail/educateur/delete', roles: ROLE_USER }
+
+
 
 when@test:
     security:

@@ -48,7 +48,6 @@ class MailContactController extends AbstractController
        $this->mailContactRepository->deleteById($id);
         return $this->redirectToRoute('app_mail_contact');
     }
-
     #[Route(path: '/mail/contact/send', name: 'app_send_mail_contact')]
     public function sendMailContact(Request $request): Response {
         $categories = $this->categorieRepository->findAll();
@@ -93,18 +92,9 @@ class MailContactController extends AbstractController
             $this->mailContactRepository->send($mail);
             return $this->redirectToRoute('app_mail_contact');
         }
-
         return $this->render('mail_contact/add.html.twig', [
             'form'=>$form->createView()
         ]);
     }
 
-    #[Route(path: '/mail/contact/view', name: 'app_view_mail_contact')]
-    public function viewMailContact(Request $request): Response {
-        $id = $request->query->get('id');
-        $mail = $this->mailContactRepository->findOneBy(["id" => $id]);
-        return $this->render('mail/contact/view.html.twig', [
-            'mail' => $mail
-        ]);
-    }
 }

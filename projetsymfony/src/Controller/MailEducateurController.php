@@ -42,7 +42,7 @@ class MailEducateurController extends AbstractController
     }
 
 
-    #[Route(path: '/mail/send', name: 'app_send_mail_educateur')]
+    #[Route(path: '/mail/educateur/send', name: 'app_send_mail_educateur')]
     public function sendMailEducateur(Request $request): Response {
         $educateurs = $this->educateursRepository->findAll();
         $form = $this->createFormBuilder()->add('objet', TextType::class, [
@@ -87,7 +87,7 @@ class MailEducateurController extends AbstractController
         ]);
     }
 
-    #[Route(path: '/mail/delete', name: 'app_delete_mail_educateur')]
+    #[Route(path: '/mail/educateur/delete', name: 'app_delete_mail_educateur')]
     public function deleteMailEducateur(Request $request): Response {
         $id = $request->query->get('id');
         $this->mailEduRepository->deleteById($id);
